@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Searched
+{% endblock %}
+
+{% block main %}
+
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container d-flex justify-content-center">
+                <div class="col-md-4">
+                    <div class="box box-widget widget-user">
+                        <div class="widget-user-header bg-aqua-active">
+                            <h3 class="widget-user-username">@{{username}}</h3>
+                        </div>
+                        <div class="widget-user-image"> <img class="img-circle" src="https://icon-library.com/images/generic-user-icon/generic-user-icon-19.jpg" alt="User Avatar"> </div>
+                        <div class="box-footer">
+                            <div class="row">
+                                <div class="col-sm-4 border-right">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{followers}}</h5> <span class="description-text">FOLLOWERS</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 border-right">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{following}}</h5> <span class="description-text">FOLLOWING</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{no_posts}}</h5> <span class="description-text">POSTS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form action="/searchedfollow" method="post">
+                        <input type="hidden" id="their_id" name="their_id" value={{id_number}}>
+                        <button type="submit" class="btn btn-outline-primary">Follow</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h1> Posts </h1>
+    </div>
+
+    <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th style="border:1px solid black">Name</th>
+                    <th style="border:1px solid black">Review</th>
+                    <th style="border:1px solid black">Rating</th>
+                    <th style="border:1px solid black">Date Read</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts %}
+                <tr>
+                    <td style="border:1px solid black"> {{post.name}} </td>
+                    <td style="border:1px solid black"> {{post.content}} </td>
+                    <td style="border:1px solid black"> {{post.rating}}/10 </td>
+                    <td style="border:1px solid black"> {{post.created_at}} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

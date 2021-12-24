@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container d-flex justify-content-center">
+                <div class="col-md-4">
+                    <div class="box box-widget widget-user">
+                        <div class="widget-user-header bg-aqua-active">
+                            <h3 class="widget-user-username">@{{username.0.username}}</h3>
+                        </div>
+                        <div class="widget-user-image"> <img class="img-circle" src="https://icon-library.com/images/generic-user-icon/generic-user-icon-19.jpg" alt="User Avatar"> </div>
+                        <div class="box-footer">
+                            <div class="row">
+                                <div class="col-sm-4 border-right">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{followers}}</h5> <span class="description-text">FOLLOWERS</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 border-right">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{following}}</h5> <span class="description-text">FOLLOWING</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{no_posts}}</h5> <span class="description-text">POSTS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h1> Posts </h1>
+    </div>
+
+    <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th style="border:1px solid black">Name</th>
+                    <th style="border:1px solid black">Author</th>
+                    <th style="border:1px solid black">Review</th>
+                    <th style="border:1px solid black">Rating</th>
+                    <th style="border:1px solid black">Date Read</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts %}
+                <tr>
+                    <td style="border:1px solid black"> {{post.name}} </td>
+                    <td style="border:1px solid black"> {{post.author}} </td>
+                    <td style="border:1px solid black"> {{post.content}} </td>
+                    <td style="border:1px solid black"> {{post.rating}}/10 </td>
+                    <td style="border:1px solid black"> {{post.created_at}} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <strong> Something to say? Make a post </strong>
+    </div>
+
+    <div>
+        <form action="/" method="post">
+            <input class="form-control mx-auto w-auto" id="name" name="name" placeholder="Name of book" type="text">
+            <input class="form-control mx-auto w-auto" id="author" name="author" placeholder="Author" type="text">
+            <textarea type="text" class="form-control mx-auto w-auto" id="review" name="review" placeholder="Review" rows="10" cols="30" ></textarea>
+            <select class="form-select mx-auto w-auto" id="rating" name="rating" placeholder="Rating" type="number">
+                <option disabled selected>Rating</option>
+                {% for num in possible_ratings %}
+                <option>{{ num }}</option>
+                {% endfor %}
+            </select>
+            <button class="btn btn-primary" type="submit">Post</button>
+        </form>
+    </div>
+
+{% endblock %}

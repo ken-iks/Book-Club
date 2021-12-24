@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Delete
+{% endblock %}
+
+{% block main %}
+    <strong> Which post would you like to delete? </strong>
+    <form action="/delete" method="post">
+        <div class="mb-3">
+            <select class="form-select mx-auto w-auto" id="name" name="name" placeholder="Name" type="text">
+                <option disabled selected>Name</option>
+                {% for book in books %}
+                    <option>{{book.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Delete</button>
+    </form>
+{% endblock %}

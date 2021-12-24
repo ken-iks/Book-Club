@@ -1,0 +1,13 @@
+This final project has much of the same functionalities as the flask app that we designed in the finance pset.
+
+In general, a regret that I (and many others that I know) have had in my life is that I have read a book and forgotton how I felt about it. After speaking with some friends, it seems that this was actually a much more common problem amongst readers than I thought it was. Thus, I decided to make Book Club as an attempt to reduce the friction between reading the book and writing the review. By turning the book review page into a social media platform in which you can follow other users, thus tracking not just your own but also your friends' progress, there is now a collective accountability to spend those extra seconds writing a quick review about the book you just read. In our fast paced, "time waits for no man" society, it is too easy to finish one book and just move straight to the nect one, without adequate time for reflection and contemplation. Book Club hopes to be the means by which readers can pause and reflect on a book that they have finished.
+
+Since the task is heavily inspired by the flask application we made in the finance pset, I was able to utilize the same libraries that the pset made use of in this project. Along with that, I was also able to make use of key functions such as apology(), hash_password(), and check_password_hash(). Along with these functions, I also created a database named book club with a few different tables.
+
+Firstly, the users table was just made to store information about the user after they register for their account. This is done in order to ensure smooth login and logout, plus registration. In general, the construction of this table is similar to the means by which it was constructed in the finance pset.
+
+Secondly, the posts table was used to store all user posts. This table was very useful for many of the pages in the application. For example, specific post_id's were used to generate all of the posts in the timeline,
+
+Finally, the follows table was the final table I implemented. This is a very simple table that just gives me an account of who follows who so that I can generate numbers for total followers and total following, along with being useful for the timeline page (only users that you follow will appear on your timeline)
+
+As mentioned in the status report, it was harder than I thought it would be to create a questionare and then give book recommendations based on them - so for this reason I decided to add additional social media features such as changing username/password, deleting posts, unfollowing/following users, as well as having a profile icon.
